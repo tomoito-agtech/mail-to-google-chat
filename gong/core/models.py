@@ -25,7 +25,12 @@ class ReceivedMail:
 class GoogleChatConfig:
     webhook_url: str
 
-# database
+# SQL
 @dataclass
 class ZenSqlConfig:
     database_url: str
+
+# Btrieve
+@dataclass
+class BtrieveConfig:
+    file_path: str

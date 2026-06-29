@@ -1,5 +1,5 @@
 """
-使用SQLAlchemy连接Zen数据库
+使用SQLAlchemy连接Zen数据库保存邮件
 """
 from sqlalchemy import create_engine,text
 from core.models import ZenSqlConfig,ReceivedMail
@@ -12,15 +12,6 @@ class ZenSqlRepository:
         建立连接
         """
         self.engine = create_engine(config.database_url)
-
-    def test_connection(self):
-        """
-        链接测试
-        :return:
-        """
-        with self.engine.connect() as conn:
-            result = conn.execute(text("SELECT 1"))
-            return result.fetchone()
 
     def save_mail(self,mail:ReceivedMail,received_account:str) -> None:
         """
@@ -51,4 +42,3 @@ class ZenSqlRepository:
                 'body': mail.body,
                 'created_at': datetime.now()
             })
-

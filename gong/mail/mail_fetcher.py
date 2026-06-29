@@ -5,8 +5,10 @@
 3. 根据邮件 ID 拿到邮件原始内容的bytes
 """
 
+import imaplib
 import re
-from datetime import datetime, timezone
+import time
+from datetime import datetime, timezone, timedelta
 
 #  把 Python 的 datetime 转成 IMAP 搜索用的日期格式。
 def format_imap_date(target_datetime: datetime) -> str:
@@ -56,12 +58,28 @@ def fetch_internal_date_from_server(mail, mail_id: bytes) -> datetime | None:
     :return: UTC datetime | None
     """
 
-    # 通过 IMAP 协议，向邮件服务器请求这封邮件的 INTERNALDATE
+    # 向邮件服务器请求这封邮件的 INTERNALDATE
     status, fetch_data = mail.fetch(mail_id, "(INTERNALDATE)")
 
     # 如果服务器返回失败，就返回 None
-    if status != "OK":
+    if status != "OK" or not fetch_data:
         return None
+
+    for item in fetch_data:
+        if isinstance(item, tuple):
+            raw = item[0]
+        else:
+            raw = item
+
+        if not raw:
+            continue
+
+        # 优先使用 Python 自带的 INTERNALDATE 解析
+        parsed_time = imaplib.Internaldate2tuple(raw)
+
+        if parsed_time is not None:
+            timestamp = time.mktime(parsed_time)
+            return datetime.fromtimestamp(timestamp, timezone.utc)
 
     # 通过 自定义的extract_internal_date函数，将 INTERNALDATE 里的时间字符串取提取出来，并返回
     return extract_internal_date(fetch_data)
@@ -174,9 +192,3 @@ def extract_raw_email(fetch_data) -> bytes | None:
             return item[1]
 
     return None
-
-
-
-
-
-

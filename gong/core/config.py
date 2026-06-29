@@ -5,7 +5,7 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-from core.models import MailConfig, GoogleChatConfig,ZenSqlConfig
+from core.models import MailConfig, GoogleChatConfig,ZenSqlConfig,BtrieveConfig
 
 def _load_env() :
     """
@@ -80,3 +80,16 @@ def get_zen_sql_config() -> ZenSqlConfig:
     database_url= _get_required_env(env_key="ZEN_SQLALCHEMY_URL",error_message="env の Zen SQLAlchemy URL が不足")
 
     return ZenSqlConfig(database_url=database_url)
+
+
+
+def get_btrieve_config() -> BtrieveConfig:
+    """
+    Btrieve链接
+    :return: BtrieveConfig
+    """
+    _load_env()
+
+    btrieve_path = _get_required_env(env_key="BTRIEVE_FILE_PATH",error_message="env の BTRIEVE_FILE_PATH が不足")
+
+    return BtrieveConfig(file_path=btrieve_path)
