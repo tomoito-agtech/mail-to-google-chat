@@ -57,11 +57,11 @@ def main():
                 received_account=mail_config.user,
             )
 
-            # # 发送到 Google Chat
-            # send_google_chat_message(
-            #     webhook_url=google_chat_config,
-            #     message=google_chat_message,
-            # )
+            # 发送到 Google Chat
+            send_google_chat_message(
+                webhook_url=google_chat_config,
+                message=google_chat_message,
+            )
 
             # 用 SQLAlchemy 保存到 Zen 数据库
             zen_repository.save_mail(
