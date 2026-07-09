@@ -14,6 +14,22 @@
     ├── zen_db_Betrive.py    # Btrive用データベースの接続・操作処理
     └── zen_db_SQL.py        # SQL用データベースの接続・操作処理
 
+##各ファイルの役割
+.gitignore
+    # Gitの管理から除外する設定ファイル
+requirements.txt         
+    # 必要な外部ライブラリの一覧
+last_uid.txt         
+    # 最後に読み込んだメールのUIDを記録するファイル
+mail_load_Btrive.py  
+    # Btriveからメールを読み込むメイン処理
+mail_load_SQL.py     
+    # SQLからメールを読み込むメイン処理
+zen_db_Betrive.py    
+    # Btrive用データベースの接続・操作処理
+zen_db_SQL.py        
+    # SQL用データベースの接続・操作処理
+    
 ## 必要な環境
 - Python 3.x
 - 依存ライブラリ（requirements.txt を参照）
