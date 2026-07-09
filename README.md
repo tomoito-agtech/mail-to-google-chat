@@ -38,32 +38,44 @@ zen_db_SQL.py
 - 依存ライブラリ（requirements.txt を参照）
 
 ## セットアップ方法
-1. 仮想環境を作成する
-Windows の場合：
 
+1. 仮想環境を作成する
+```
+Windows の場合：
 python -m venv venv
 venv\Scripts\activate
+```
+```
 macOS / Linux の場合：
 
 python3 -m venv venv
 source venv/bin/activate
+```
 2. 必要なパッケージをインストールする
+```
 pip install -r requirements.txt
+```
 3. .env ファイルを作成する
+```
 .env.example をコピーして .env を作成します。
-
+```
+```
 Windows の場合：
 
 copy .env.example .env
+```
+```
 macOS / Linux の場合：
 
 cp .env.example .env
+```
 作成した .env に、実際のメール接続情報を記入します。
-
+```
 CPI_IMAP_SERVER=aaaaaaaaa.example.co.jp
 CPI_EMAIL=aaaaaaaaa.example.co.jp
 CPI_PASSWORD=aaaaaaaaa
 WEBHOOK_URL = "aaaaaaaaa"
+```
 ※ .env にはパスワードなどの機密情報を記載するため、GitHub にはアップロードしません。
 
 ## 起動方法
