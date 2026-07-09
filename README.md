@@ -39,7 +39,7 @@ zen_db_SQL.py
 
 ## セットアップ方法
 
-1. 仮想環境を作成する
+### 1. 仮想環境を作成する
 
 Windows の場合：
 ```
@@ -52,11 +52,11 @@ macOS / Linux の場合：
 python3 -m venv venv
 source venv/bin/activate
 ```
-2. 必要なパッケージをインストールする
+### 2. 必要なパッケージをインストールする
 ```
 pip install -r requirements.txt
 ```
-3. .env ファイルを作成する
+### 3. .env ファイルを作成する
 ```
 .env.example をコピーして .env を作成します。
 ```
