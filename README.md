@@ -17,6 +17,7 @@
     └── zen_db_SQL.py   
 ```
 ##各ファイルの役割
+```
 .gitignore
     # Gitの管理から除外する設定ファイル
 requirements.txt         
@@ -31,7 +32,7 @@ zen_db_Betrive.py
     # Btrive用データベースの接続・操作処理
 zen_db_SQL.py        
     # SQL用データベースの接続・操作処理
-
+```
 ## 必要な環境
 - Python 3.x
 - 依存ライブラリ（requirements.txt を参照）
