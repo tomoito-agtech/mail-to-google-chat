@@ -82,12 +82,15 @@ WEBHOOK_URL = "aaaaaaaaa"
 ## 起動方法
 1. ターミナルを開きます。
 2. 以下のコマンドを実行してプログラムを起動します。
+```
    SQLver
      python src/mail_load_SQL.py
    
    Btrivever
      python src/mail_load_Btrive.py
-
+```
 
 ## 注意事項
-- 実行前に、各種設定ファイル（DBの接続情報など）が正しいか確認してください。
+・実行前に、各種設定ファイル（DBの接続情報など）が正しいか確認してください。
+・パスワードなどの機密情報は .env に記載します。
+・.env は .gitignore により Git 管理対象外にしています。
