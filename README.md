@@ -40,14 +40,15 @@ zen_db_SQL.py
 ## セットアップ方法
 
 1. 仮想環境を作成する
-```
+
 Windows の場合：
+```
 python -m venv venv
 venv\Scripts\activate
 ```
-```
-macOS / Linux の場合：
 
+macOS / Linux の場合：
+```
 python3 -m venv venv
 source venv/bin/activate
 ```
