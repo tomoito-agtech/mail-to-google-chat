@@ -60,14 +60,14 @@ pip install -r requirements.txt
 ```
 .env.example をコピーして .env を作成します。
 ```
-```
-Windows の場合：
 
+Windows の場合：
+```
 copy .env.example .env
 ```
-```
-macOS / Linux の場合：
 
+macOS / Linux の場合：
+```
 cp .env.example .env
 ```
 作成した .env に、実際のメール接続情報を記入します。
