@@ -5,6 +5,7 @@
 受信日時、受信アカウント、件名を出力し、Actian Zenに保存します。
 
 ファイル構成
+
 ├── .gitignore              
 ├── requirements.txt      
 └── src/                   
