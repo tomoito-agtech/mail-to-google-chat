@@ -5,14 +5,14 @@
 受信日時、受信アカウント、件名を出力し、Actian Zenに保存します。
 
 ファイル構成
-├── .gitignore               # Gitの管理から除外する設定ファイル
-├── requirements.txt         # 必要な外部ライブラリの一覧
-└── src/                     # プログラムのソースコード格納フォルダ
-    ├── last_uid.txt         # 最後に読み込んだメールのUIDを記録するファイル
-    ├── mail_load_Btrive.py  # Btriveからメールを読み込むメイン処理
-    ├── mail_load_SQL.py     # SQLからメールを読み込むメイン処理
-    ├── zen_db_Betrive.py    # Btrive用データベースの接続・操作処理
-    └── zen_db_SQL.py        # SQL用データベースの接続・操作処理
+├── .gitignore              
+├── requirements.txt      
+└── src/                   
+    ├── last_uid.txt      
+    ├── mail_load_Btrive.py 
+    ├── mail_load_SQL.py  
+    ├── zen_db_Betrive.py
+    └── zen_db_SQL.py   
 
 ##各ファイルの役割
 .gitignore
