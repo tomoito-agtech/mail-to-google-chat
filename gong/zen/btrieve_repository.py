@@ -43,10 +43,11 @@ class BtrieveRepository:
     SUBJECT_SIZE = 256
 
     # body：DDF position=528, size=8, type=Clob / LONGVARCHAR
-    # 527 是 NULL 标志；528～535 保存正文长度和正文起点；545以后才是正文
+    # 527 是 NULL 标志；528～535(8size) 保存正文长度和正文起点；545以后才是正文
+    # 528～531：4 个字节，保存“正文长度”这个数字，532～535：4 个字节，保存“正文开始位置”这个数字(在record的第532个位置，写入一个数字。这个数字告诉 Zen：真正的正文从哪里开始。)
     BODY_NULL_POS = 527
-    BODY_LEN_POS = 528
-    BODY_START_POS = 532
+    BODY_TEXT_LENGTH_VALUE_POS = 528
+    BODY_TEXT_START_VALUE_POS = 532 #在532这个位置写如545这个数字。因为Btrieve 读 LONGVARCHAR 的时候，不会自己猜正文在哪里。需要在固定区里看到一个说明数字
     BODY_TEXT_POS = FIXED_RECORD_SIZE
     BODY_MAX_SIZE = 5000
 
@@ -165,7 +166,7 @@ class BtrieveRepository:
         # 在 body 说明区写入：body 正文的 bytes 长度
         self._put_uint(
             fixed_record,
-            self.BODY_LEN_POS,
+            self.BODY_TEXT_LENGTH_VALUE_POS,
             len(body_bytes),
             4,
         )
@@ -173,7 +174,7 @@ class BtrieveRepository:
         # 在 body 说明区写入：body 正文真正开始的位置
         self._put_uint(
             fixed_record,
-            self.BODY_START_POS,
+            self.BODY_TEXT_START_VALUE_POS,
             self.BODY_TEXT_POS,
             4,
         )

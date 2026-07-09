@@ -2,12 +2,7 @@
 程序入口，负责整体流程控制和 print 输出
 """
 
-from core.config import (
-    get_mail_config,
-    get_google_chat_config,
-    get_zen_sql_config,
-    get_btrieve_config,
-)
+from core.config import get_mail_config,get_google_chat_config,get_zen_sql_config,get_btrieve_config
 from mail.mail_receiver import fetch_recent_mails
 from chat.chat_notifier import send_google_chat_message
 from zen.sql_repository import ZenSqlRepository
